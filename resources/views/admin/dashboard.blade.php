@@ -11,6 +11,7 @@
                 <div class="p-6 text-danger-900 d-flex justify-content-between align-items-center">
                     <p class="text-dark">Você fez login!</p>
                     <p><a href="/admin/services" class="btn btn-primary">Serviços</a></p>
+                    <p><a href="/admin/clients" class="btn btn-primary">Clientes</a></p>
                 </div>
             </div>
         </div>
