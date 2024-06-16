@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+        <h2 class="font-semibold text-xl text-branco leading-tight">
             {{ __('Criar Serviços') }}
         </h2>
     </x-slot>
@@ -38,7 +38,7 @@
                         </div>
                         <div class="row mb-3">
                             <div class="col">
-                                <input type="text" name="price" class="form-control" placeholder="Preço">
+                                <input type="text" name="price" class="form-control" placeholder="Preço" onInput="mascaraMoeda(event);">
                                 @error('price')
                                 <span class="text-danger">{{$message}}</span>
                                 @enderror
@@ -56,3 +56,21 @@
         </div>
     </div>
 </x-app-layout>
+<script>
+    const mascaraMoeda = (event) => {
+    const onlyDigits = event.target.value
+        .split("")
+        .filter(s => /\d/.test(s))
+        .join("")
+        .padStart(3, "0")
+    const digitsFloat = onlyDigits.slice(0, -2) + "." + onlyDigits.slice(-2)
+    event.target.value = maskCurrency(digitsFloat)
+    }
+
+    const maskCurrency = (valor, locale = 'pt-BR', currency = 'BRL') => {
+    return new Intl.NumberFormat(locale, {
+        style: 'currency',
+        currency
+    }).format(valor)
+    }
+</script>

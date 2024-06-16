@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+        <h2 class="font-semibold text-xl text-branco leading-tight">
             {{ __('Admin serviços') }}
         </h2>
     </x-slot>
@@ -36,7 +36,7 @@
                                 <td class="align-middle">{{ $service->name }}</td>
                                 <td class="align-middle">{{ $service->professional }}</td>
                                 <td class="align-middle">{{ $service->price }}</td>
-                                <td class="align-middle">
+                                <td class="align-middle"> 
                                     <div class="btn-group d-flex " role="group" aria-label="Basic example">
                                         <a href="{{ route('admin/services/edit', ['id'=>$service->id]) }}" type="button" class="btn btn-warning">Editar</a>
                                         <a href="{{ route('admin/services/delete', ['id'=>$service->id]) }}" type="button" class="btn btn-danger">Deletar</a>

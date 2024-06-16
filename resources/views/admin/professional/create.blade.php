@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-branco leading-tight">
-            {{ __('Criar cliente')}}
+            {{ __('Criar profissional')}}
         </h2>
     </x-slot>
 
@@ -9,7 +9,7 @@
         <div class="max-w-7xl mt-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
-                    <h1 class="mb-0">Adicionar cliente</h1>
+                    <h1 class="mb-0">Adicionar profissional</h1>
                     <hr />
                     @if (session()->has('error'))
                     <div>
@@ -17,9 +17,9 @@
                     </div>
                     @endif
 
-                    <p><a href="{{ route('admin/clients') }}" class="btn btn-primary">Voltar</a></p>
+                    <p><a href="{{ route('admin/professionals') }}" class="btn btn-primary">Voltar</a></p>
  
-                    <form action="{{ route('admin/clients/save') }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('admin/professionals/save') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="row mb-3">
                             <div class="col">
@@ -49,14 +49,6 @@
                             <div class="col">
                                 <input type="text" name="cpf" class="form-control" placeholder="CPF" id="CPFInput" maxlength="11" oninput="criaMascara('CPF')">
                                 @error('cpf')
-                                <span class="text-danger">{{$message}}</span>
-                                @enderror
-                            </div>
-                        </div>
-                        <div class="row mb-3">
-                            <div class="col">
-                                <input type="text" name="pet" class="form-control" placeholder="Nome do pet">
-                                @error('pet')
                                 <span class="text-danger">{{$message}}</span>
                                 @enderror
                             </div>

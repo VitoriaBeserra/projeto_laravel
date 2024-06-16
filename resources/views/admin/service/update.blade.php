@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+        <h2 class="font-semibold text-xl text-branco leading-tight">
             {{ __('Editar serviços') }}
         </h2>
     </x-slot>
@@ -13,6 +13,7 @@
                         <h1 class="mb-0">Editar dados do Serviço</h1>
                     </div>
                     <hr />
+                    <p><a href="{{ route('/admin/services') }}" class="btn btn-primary">Voltar</a></p>
                     @if (session()->has('error'))
                     <div>
                         {{session('error')}}
@@ -42,7 +43,7 @@
                         <div class="row mb-3">
                             <div class="col">
                                 <label for="price">Preço:</label>
-                                <input type="number" name="price" class="form-control" placeholder="" value="{{$services->price}}">
+                                <input type="text" name="price" class="form-control" placeholder="" value="{{$services->price}}" onInput="mascaraMoeda(event);">
                                 @error('price')
                                 <span class="text-danger">{{$message}}</span>
                                 @enderror
@@ -52,7 +53,7 @@
  <!-- tentar estilizar esse botão de voltar-->
                         <div class="row">
                             <div class="d-grid">
-                            <p><a href="{{ route('/admin/services') }}" class="btn btn-primary">Voltar</a></p>
+                            
                                 <button class="btn btn-warning">Editar</button>
                             </div>
                         </div>
@@ -62,3 +63,21 @@
         </div>
     </div>
 </x-app-layout>
+<script>
+    const mascaraMoeda = (event) => {
+    const onlyDigits = event.target.value
+        .split("")
+        .filter(s => /\d/.test(s))
+        .join("")
+        .padStart(3, "0")
+    const digitsFloat = onlyDigits.slice(0, -2) + "." + onlyDigits.slice(-2)
+    event.target.value = maskCurrency(digitsFloat)
+    }
+
+    const maskCurrency = (valor, locale = 'pt-BR', currency = 'BRL') => {
+    return new Intl.NumberFormat(locale, {
+        style: 'currency',
+        currency
+    }).format(valor)
+    }
+</script>

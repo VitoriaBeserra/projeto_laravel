@@ -16,11 +16,18 @@ export default {
             },
         }, 
         colors: {
-            'fundo': '#005f73'
+            'fundo': '#005f73',
+            'branco': '#ffffff',
+            'verde': '#086b6f',
+            'nav': '#309597',
         },
         image: {
-            'logo': "url(/public/img/logo.png)"
-        }
+            'logo': "url(/public/img/logo.png)",
+        },
+        backgroundImage: {
+            'fundo': "url('/public/img/fundo.jpg')",
+        },
+
     },
     
 

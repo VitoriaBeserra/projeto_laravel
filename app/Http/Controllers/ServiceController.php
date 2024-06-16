@@ -67,7 +67,7 @@ class ServiceController extends Controller
         
         if ($data) {
             session()->flash('success', 'O serviço foi atualizado com sucesso');
-            return redirect(route('admin.service'));
+            return redirect(route('/admin/services'));
         } else {
             session()->flash('error', 'Não foi editado com sucesso');
             return redirect(route('admin.service.update'));

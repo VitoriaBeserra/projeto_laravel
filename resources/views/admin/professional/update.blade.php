@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-branco leading-tight">
-            {{ __('Editar Cliente')}}
+            {{ __('Editar profissional')}}
         </h2>
     </x-slot>
 
@@ -9,15 +9,15 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
-                    <h1 class="mb-0">Editar clientes</h1>
+                    <h1 class="mb-0">Editar Profissional</h1>
                     <hr />
-                    <form action="{{ route('admin/clients/update', $clients->id) }}" method="POST">
+                    <form action="{{ route('admin/professionals/update', $professionals->id) }}" method="POST">
                         @csrf
                         @method('PUT')
                         <div class="row">
                             <div class="col mb-3">
                                 <label class="form-label">Nome do responsável</label>
-                                <input type="text" name="name" class="form-control" placeholder="Nome" value="{{$clients->name}}">
+                                <input type="text" name="name" class="form-control" placeholder="Nome" value="{{$professionals->name}}">
                                 @error('name')
                                 <span class="text-danger">{{$message}}</span>
                                 @enderror
@@ -26,25 +26,19 @@
                         <div class="row">
                             <div class="col mb-3">
                                 <label class="form-label">Email</label>
-                                <input type="text" name="email" class="form-control" placeholder="Email" value="{{$clients->email}}">
+                                <input type="text" name="email" class="form-control" placeholder="Email" value="{{$professionals->email}}">
                             </div>
                         </div>
                         <div class="row">
                             <div class="col mb-3">
                                 <label class="form-label">Telefone</label>
-                                <input type="text" name="telephone" class="form-control" placeholder="Telefone" value="{{$clients->telephone}}" id="CelularInput" maxlength="11" oninput="criaMascara('Celular')">
+                                <input type="text" name="telephone" class="form-control" placeholder="Telefone" value="{{$professionals->telephone}}" id="CelularInput" maxlength="11" oninput="criaMascara('Celular')">
                             </div>
                         </div>
                         <div class="row">
                             <div class="col mb-3">
                                 <label class="form-label">CPF</label>
-                                <input type="text" name="cpf" class="form-control" placeholder="CPF" value="{{$clients->cpf}}" id="CPFInput" maxlength="11" oninput="criaMascara('CPF')">
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col mb-3">
-                                <label class="form-label">Nome do pet</label>
-                                <input type="text" name="pet" class="form-control" placeholder="Pet" value="{{$clients->pet}}">
+                                <input type="text" name="cpf" class="form-control" placeholder="CPF" value="{{$professionals->cpf}}" id="CPFInput" maxlength="11" oninput="criaMascara('CPF')">
                             </div>
                         </div>
                         <div class="row">

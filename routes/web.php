@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\ClientController;
+use App\Http\Controllers\ProfessionalController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -23,6 +24,10 @@ Route::middleware('auth')->group(function () {
 Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/', [HomeController::class, 'index'])->name('admin/dashboard');
  
+    // Route::resource('services', 'ServiceController');
+    // Route::resource('clients', 'ClientController');
+    // Route::resource('professionals', 'ProfessionalController');
+
     Route::get('/admin/services', [ServiceController::class, 'index'])->name('/admin/services');
     Route::get('/admin/services/create', [ServiceController::class, 'create'])->name('admin/services/create');
     Route::post('/admin/services/save', [ServiceController::class, 'save'])->name('admin/services/save');
@@ -36,6 +41,13 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/admin/clients/edit/{id}', [ClientController::class, 'edit'])->name('admin/clients/edit');
     Route::put('/admin/clients/edit/{id}', [ClientController::class, 'update'])->name('admin/clients/update');
     Route::get('/admin/clients/delete/{id}', [ClientController::class, 'delete'])->name('admin/clients/delete');
+
+    Route::get('/admin/professionals', [ProfessionalController::class, 'index'])->name('admin/professionals');
+    Route::get('/admin/professionals/create', [ProfessionalController::class, 'create'])->name('admin/professionals/create');
+    Route::post('/admin/professionals/save', [ProfessionalController::class, 'save'])->name('admin/professionals/save');
+    Route::get('/admin/professionals/edit/{id}', [ProfessionalController::class, 'edit'])->name('admin/professionals/edit');
+    Route::put('/admin/professionals/edit/{id}', [ProfessionalController::class, 'update'])->name('admin/professionals/update');
+    Route::get('/admin/professionals/delete/{id}', [ProfessionalController::class, 'delete'])->name('admin/professionals/delete');
 });
 
 require __DIR__.'/auth.php';
